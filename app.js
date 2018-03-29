@@ -1,15 +1,16 @@
 const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const spasibo = require('./routes/spasibo');
-
 const app = express();
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.listen(3000);
+
 app.use(logger('dev'));
+app.use(bodyParser());
 app.use(cookieParser());
 
 app.use('/', index);
