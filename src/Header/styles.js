@@ -17,5 +17,5 @@ export const Title = styled.h3 `
 `
 
 export const Wrapper = styled.div `
-
+position: relative;
 `

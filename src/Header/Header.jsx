@@ -1,6 +1,6 @@
 import React from 'react';
 import {slide as Menu} from 'react-burger-menu';
-import {MenuItem, Title} from './styles';
+import {MenuItem, Title, Wrapper} from './styles';
 
 
 const menuStyles = {
@@ -48,14 +48,14 @@ export class Header extends React.Component {
 
   render() {
     return (
-      <div className='wrapper'>
+      <Wrapper>
         <Menu styles={menuStyles} left>
           <MenuItem id='read' href='/main'>Ваши спасибо</MenuItem>
           <MenuItem id='send' href='/send'>Отправить спасибо</MenuItem>
           <MenuItem id='user' href='/profile'>Профиль</MenuItem>
         </Menu>
         <Title>Daily Спасибо</Title>
-      </div>
+      </Wrapper>
     );
   }
 }
