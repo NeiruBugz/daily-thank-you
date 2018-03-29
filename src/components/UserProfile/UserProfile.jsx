@@ -9,7 +9,7 @@ export default class UserProfile extends React.Component {
         <Header/>
         <Wrapper>
           <UserPic
-            src='https://pp.userapi.com/c841128/v841128454/33784/DSCjS0RfwIo.jpg'
+            src='https://www.w3schools.com/howto/img_avatar.png'
             alt='userImage'/>
           <FlexInfo>
             <Name>Наиль</Name>
