@@ -4,6 +4,7 @@ const user = require('../db/user');
 
 /* POST new user. */
 router.post('/', (req, res) => {
+
   const response = user.saveUser(req.body.name, req.body.email, req.body.photo || null);
   response
     .then(() => res.status(201).send('Created'))

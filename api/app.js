@@ -3,19 +3,20 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
+const oauth = require('./routes/oauth');
 const users = require('./routes/users');
 const spasibo = require('./routes/spasibo');
 const app = express();
+// app.listen(3000);
 
-app.listen(3000);
+app.use('/', index);
+app.use('/oauth', oauth);
+app.use('/users', users);
+app.use('/spasibo', spasibo);
 
 app.use(logger('dev'));
 app.use(bodyParser());
 app.use(cookieParser());
-
-app.use('/', index);
-app.use('/users', users);
-app.use('/spasibo', spasibo);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
