@@ -21,8 +21,7 @@
   "private": false,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon app.js",
-    "now": "now ./"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -32,7 +31,6 @@
     "global": "^4.3.2",
     "googleapis": "^28.0.1",
     "mongoose": "^5.0.12",
-    "morgan": "~1.9.0",
-    "now": "^10.2.2"
+    "morgan": "~1.9.0"
   }
 }
