@@ -15,7 +15,8 @@ app.use('/users', users);
 app.use('/spasibo', spasibo);
 
 app.use(logger('dev'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 // catch 404 and forward to error handler

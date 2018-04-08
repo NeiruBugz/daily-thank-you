@@ -6,4 +6,8 @@ router.get('/', (req, res, next) => {
   res.send('respond with a resource');
 });
 
+router.get('/favicon.ico', function(req, res) {
+  res.status(204);
+});
+
 module.exports = router;

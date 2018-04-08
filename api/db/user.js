@@ -8,11 +8,11 @@ class User {
       photo: photo
     });
     return new Promise(((resolve, reject) => {
-      user.save((err) => {
+      user.save((err, res) => {
         if (err) {
           reject(err);
         }
-        resolve(true);
+        resolve(res._id);
       });
     }));
   }
@@ -24,6 +24,31 @@ class User {
           reject(err);
         }
         resolve(user);
+      });
+    });
+  }
+
+  static getId(email) {
+    return new Promise((resolve, reject) => {
+      UserModel.findOne({email: email}, '_id', (err, res) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(res.id);
+      });
+    });
+  }
+
+  static findByName(name) {
+    console.log(name);
+    const regex = new RegExp(name, 'i');
+    console.error(regex);
+    return new Promise((resolve, reject) => {
+      UserModel.find({name: regex}, 'name email photo', (err, res) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(res);
       });
     });
   }

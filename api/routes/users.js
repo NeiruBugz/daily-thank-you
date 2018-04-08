@@ -2,9 +2,20 @@ const express = require('express');
 const router = express.Router();
 const user = require('../db/user');
 
+/* GET users by name */
+router.get('/find', (req, res) => {
+  console.log(req.params);
+  const response = user.findByName(req.params.name);
+  response
+    .then(users => res.send(JSON.stringify(users)))
+    .catch(err => {
+      console.error(err);
+      res.status(404).send('Not Found');
+    });
+});
+
 /* POST new user. */
 router.post('/', (req, res) => {
-
   const response = user.saveUser(req.body.name, req.body.email, req.body.photo || null);
   response
     .then(() => res.status(201).send('Created'))
@@ -12,7 +23,6 @@ router.post('/', (req, res) => {
       console.error(err);
       res.status(500).send('Internal Server Error');
     });
-  res.send('respond with a resource');
 });
 
 /* GET user by ID. */

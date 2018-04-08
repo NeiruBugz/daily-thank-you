@@ -9,16 +9,15 @@ const oauth2Client = new OAuth2(
 
 function generateAuthUrl() {
   return oauth2Client.generateAuthUrl({
-    // If you only need one scope you can pass it as a string
-    scope: 'https://www.googleapis.com/auth/plus.me',
+    access_type: 'offline',
+    scope: 'https://www.googleapis.com/auth/userinfo.email'
   });
 }
 
 function getAccessToken(code) {
   return new Promise((resolve, reject) => {
-    oauth2Client.getToken('code')
+    oauth2Client.getToken(code.replace('#', ''))
       .then(data => {
-        oauth2Client.setCredentials(data.tokens);
         resolve(data.tokens);
       })
       .catch(err => {
@@ -27,19 +26,21 @@ function getAccessToken(code) {
   });
 }
 
-const plus = google.plus({
-  version: 'v1',
-  auth: oauth2Client
-});
-
-function getName() {
-  plus.people.get({
-    userId: 'me'
-  }, (err, res) => {
-    if (err) {
-      console.error(err);
-    }
-    console.log(res.data);
+function getName(tokens) {
+  return new Promise((resolve, reject) => {
+    oauth2Client.setCredentials(tokens);
+    const url = 'https://www.googleapis.com/oauth2/v2/userinfo';
+    oauth2Client.getRequestMetadata(url)
+      .then(res => {
+        res.url = url;
+        return oauth2Client.request(res);
+      })
+      .then(res => {
+        resolve(res);
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 }
 
