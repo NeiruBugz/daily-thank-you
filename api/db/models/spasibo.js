@@ -12,13 +12,13 @@ const spasiboSchema = mongoose.Schema({
   },
   text: {
     type: String,
-    required: true,
+    required: true
   },
   date: {
     type: Date,
     default: Date.now,
-    required: true,
-  },
+    required: true
+  }
 });
 const SpasiboModel = mongoose.model('Spasibo', spasiboSchema);
 

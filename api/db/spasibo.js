@@ -8,12 +8,7 @@ class Spasibo {
       text: text
     });
     return new Promise(((resolve, reject) => {
-      spasibo.save(err => {
-        if (err) {
-          reject(err);
-        }
-        resolve(true);
-      });
+      spasibo.save(err => err ? reject(err) : resolve());
     }));
   }
 
@@ -25,12 +20,7 @@ class Spasibo {
         .select('to text date')
         .limit(10)
         .sort('-date')
-        .then((err, res) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(res);
-        });
+        .then((err, res) => err ? reject(err) : resolve(res));
     });
   }
 }

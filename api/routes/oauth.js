@@ -10,32 +10,20 @@ router.get('/', (req, res) => {
 
 router.get('/validate', (req, res) => {
   oauth.getAccessToken(req.query.code)
-    .then(tokens => {
-      return oauth.getName(tokens);
-    })
+    .then(tokens => oauth.getName(tokens))
     .then(info => {
       const name = info.data.name;
       const email = info.data.email;
       const photo = info.data.picture;
       user.getUserByEmail(email)
-        .then(user => {
-          res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
-        })
+        .then(user => res.redirect('https://spasibo.dergunov.net/oauth/' + user.token))
         .catch(() => {
           user.saveUser(name, email, photo)
-            .then(user => {
-              res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
-            })
-            .catch(err => {
-              console.error(err);
-              res.status(500).send('Internal Server Error');
-            })
+            .then(user => res.redirect('https://spasibo.dergunov.net/oauth/' + user.token))
+            .catch(() => res.status(500).send('Internal Server Error'));
         });
     })
-    .catch(err => {
-      console.error(err);
-      res.send(err);
-    });
+    .catch(err => res.send(err));
 });
 
 module.exports = router;
