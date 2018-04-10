@@ -7,7 +7,6 @@ const oauth = require('./routes/oauth');
 const users = require('./routes/users');
 const spasibo = require('./routes/spasibo');
 const app = express();
-// app.listen(3000);
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));

@@ -3,7 +3,7 @@ const mongoose = require('./../index');
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  },
+  }
 });
 const UserModel = mongoose.model('User', userSchema);
 

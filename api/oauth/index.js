@@ -18,12 +18,8 @@ function generateAuthUrl() {
 function getAccessToken(code) {
   return new Promise((resolve, reject) => {
     oauth2Client.getToken(code.replace('#', ''))
-      .then(data => {
-        resolve(data.tokens);
-      })
-      .catch(err => {
-        reject(err);
-      })
+      .then(data => resolve(data.tokens))
+      .catch(err => reject(err));
   });
 }
 
@@ -36,12 +32,8 @@ function getName(tokens) {
         res.url = url;
         return oauth2Client.request(res);
       })
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
+      .then(res => resolve(res))
+      .catch(err => reject(err));
   });
 }
 

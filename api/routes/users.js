@@ -6,30 +6,21 @@ const user = require('../db/user');
 router.get('/find', (req, res) => {
   user.findByName(req.params.name)
     .then(users => res.send(JSON.stringify(users)))
-    .catch(err => {
-      console.error(err);
-      res.status(404).send('Not Found');
-    });
+    .catch(() => res.status(404).send('Not Found'));
 });
 
 /* POST new user. */
 router.post('/', (req, res) => {
   user.saveUser(req.body.name, req.body.email, req.body.photo || null)
     .then(() => res.status(201).send('Created'))
-    .catch(err => {
-      console.error(err);
-      res.status(500).send('Internal Server Error');
-    });
+    .catch(() => res.status(500).send('Internal Server Error'));
 });
 
 /* GET user by ID. */
 router.get('/:id', (req, res) => {
   user.getUser(req.params.id)
     .then(user => res.send(JSON.stringify(user)))
-    .catch(err => {
-      console.error(err);
-      res.status(404).send('Not Found');
-    });
+    .catch(() => res.status(404).send('Not Found'));
 });
 
 /* PUT user data. */
