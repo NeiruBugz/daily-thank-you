@@ -16,6 +16,23 @@ class Spasibo {
       });
     }));
   }
+
+  static get(email) {
+    return new Promise((resolve, reject) => {
+      SpasiboModel
+        .find()
+        .or([{from: email}, {to: email}])
+        .select('to text date')
+        .limit(10)
+        .sort('-date')
+        .then((err, res) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(res);
+        });
+    });
+  }
 }
 
 module.exports = Spasibo;

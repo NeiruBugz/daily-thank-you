@@ -40,9 +40,7 @@ class User {
   }
 
   static findByName(name) {
-    console.log(name);
     const regex = new RegExp(name, 'i');
-    console.error(regex);
     return new Promise((resolve, reject) => {
       UserModel.find({name: regex}, 'name email photo', (err, res) => {
         if (err) {

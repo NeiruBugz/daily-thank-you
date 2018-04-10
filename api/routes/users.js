@@ -4,9 +4,7 @@ const user = require('../db/user');
 
 /* GET users by name */
 router.get('/find', (req, res) => {
-  console.log(req.params);
-  const response = user.findByName(req.params.name);
-  response
+  user.findByName(req.params.name)
     .then(users => res.send(JSON.stringify(users)))
     .catch(err => {
       console.error(err);
@@ -16,8 +14,7 @@ router.get('/find', (req, res) => {
 
 /* POST new user. */
 router.post('/', (req, res) => {
-  const response = user.saveUser(req.body.name, req.body.email, req.body.photo || null);
-  response
+  user.saveUser(req.body.name, req.body.email, req.body.photo || null)
     .then(() => res.status(201).send('Created'))
     .catch(err => {
       console.error(err);
@@ -27,8 +24,7 @@ router.post('/', (req, res) => {
 
 /* GET user by ID. */
 router.get('/:id', (req, res) => {
-  const response = user.getUser(req.params.id);
-  response
+  user.getUser(req.params.id)
     .then(user => res.send(JSON.stringify(user)))
     .catch(err => {
       console.error(err);
