@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "scp -r build/* dergunov.net:~/dergunov.net/public_html/_subdomains/spasibo/"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
