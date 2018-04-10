@@ -2,7 +2,6 @@ import React from 'react';
 import {slide as Menu} from 'react-burger-menu';
 import {MenuItem, Title, Wrapper} from './styles';
 
-
 const menuStyles = {
   bmBurgerButton: {
     position: 'absolute',
