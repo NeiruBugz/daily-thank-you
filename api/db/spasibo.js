@@ -17,11 +17,11 @@ class Spasibo {
     }));
   }
 
-  static get(email) {
+  static get(id) {
     return new Promise((resolve, reject) => {
       SpasiboModel
         .find()
-        .or([{from: email}, {to: email}])
+        .or([{from: id}, {to: id}])
         .select('to text date')
         .limit(10)
         .sort('-date')
