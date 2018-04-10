@@ -9,15 +9,15 @@ const spasibo = require('./routes/spasibo');
 const app = express();
 // app.listen(3000);
 
+app.use(logger('dev'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(cookieParser());
+
 app.use('/', index);
 app.use('/oauth', oauth);
 app.use('/users', users);
 app.use('/spasibo', spasibo);
-
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cookieParser());
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

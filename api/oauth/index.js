@@ -10,7 +10,8 @@ const oauth2Client = new OAuth2(
 function generateAuthUrl() {
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    scope: 'https://www.googleapis.com/auth/userinfo.email'
+    scope: 'https://www.googleapis.com/auth/userinfo.email',
+    prompt: 'consent'
   });
 }
 
