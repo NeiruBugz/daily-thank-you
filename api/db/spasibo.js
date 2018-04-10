@@ -16,11 +16,14 @@ class Spasibo {
     return new Promise((resolve, reject) => {
       SpasiboModel
         .find()
-        .or([{from: id}, {to: id}])
-        .select('to text date')
-        .limit(10)
+        .or([{to: id.toObjectId()}, {from: id.toObjectId()}])
+        .populate('from to')
+        .limit(20)
         .sort('-date')
-        .then((err, res) => err ? reject(err) : resolve(res));
+        .select()
+        .exec((err, spasibo) => {
+          err ? reject(err) : resolve(spasibo);
+        });
     });
   }
 }

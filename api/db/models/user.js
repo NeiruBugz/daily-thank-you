@@ -14,7 +14,8 @@ const userSchema = mongoose.Schema({
   token: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    select: false
   }
 });
 const UserModel = mongoose.model('User', userSchema);
