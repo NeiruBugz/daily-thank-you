@@ -25,16 +25,8 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "eslint": "^4.19.1",
     "express": "~4.15.5",
-    "global": "^4.3.2",
     "googleapis": "^28.0.1",
-    "mongoose": "^5.0.12",
-    "morgan": "~1.9.0"
-  },
-  "devDependencies": {
-    "eslint-config-google": "^0.9.1"
+    "mongoose": "^5.0.12"
   }
 }

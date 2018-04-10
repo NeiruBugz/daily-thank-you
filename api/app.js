@@ -1,6 +1,4 @@
 const express = require('express');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const oauth = require('./routes/oauth');
@@ -8,10 +6,8 @@ const users = require('./routes/users');
 const spasibo = require('./routes/spasibo');
 const app = express();
 
-app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cookieParser());
 
 app.use('/', index);
 app.use('/oauth', oauth);
