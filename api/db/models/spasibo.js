@@ -1,12 +1,14 @@
 const mongoose = require('./../index');
 const spasiboSchema = mongoose.Schema({
   from: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   to: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   text: {
     type: String,

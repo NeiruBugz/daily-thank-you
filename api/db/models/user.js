@@ -1,4 +1,5 @@
 const mongoose = require('./../index');
+
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -10,6 +11,11 @@ const userSchema = mongoose.Schema({
     unique: true
   },
   photo: String,
+  token: {
+    type: String,
+    required: true,
+    unique: true
+  },
 });
 const UserModel = mongoose.model('User', userSchema);
 

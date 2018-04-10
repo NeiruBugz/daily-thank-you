@@ -1,18 +1,21 @@
 const UserModel = require('./models/user');
+const crypto = require('crypto');
 
 class User {
   static saveUser(name, email, photo = null) {
+    const currentDate = (new Date()).valueOf().toString();
+    const random = Math.random().toString();
+    const token = crypto.createHash('sha1').update(currentDate + random).digest('hex');
+
     const user = new UserModel({
       name: name,
       email: email,
-      photo: photo
+      photo: photo,
+      token: token
     });
     return new Promise(((resolve, reject) => {
       user.save((err, res) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(res._id);
+        err ? reject(err) : resolve(res);
       });
     }));
   }
@@ -20,21 +23,15 @@ class User {
   static getUser(id) {
     return new Promise((resolve, reject) => {
       UserModel.findById(id, (err, user) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(user);
+        err ? reject(err) : resolve(user);
       });
     });
   }
 
-  static getId(email) {
+  static getUserByEmail(email) {
     return new Promise((resolve, reject) => {
-      UserModel.findOne({email: email}, '_id', (err, res) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(res.id);
+      UserModel.findOne({email: email}, '_id name email photo token', (err, res) => {
+        err ? reject(err) : resolve(res);
       });
     });
   }
@@ -43,10 +40,7 @@ class User {
     const regex = new RegExp(name, 'i');
     return new Promise((resolve, reject) => {
       UserModel.find({name: regex}, 'name email photo', (err, res) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(res);
+        err ? reject(err) : resolve(res);
       });
     });
   }

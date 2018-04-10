@@ -17,14 +17,14 @@ router.get('/validate', (req, res) => {
       const name = info.data.name;
       const email = info.data.email;
       const photo = info.data.picture;
-      user.getId(email)
-        .then(id => {
-          res.redirect('https://spasibo.dergunov.net/oauth/' + id);
+      user.getUserByEmail(email)
+        .then(user => {
+          res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
         })
         .catch(() => {
           user.saveUser(name, email, photo)
-            .then(id => {
-              res.redirect('https://spasibo.dergunov.net/oauth/' + id);
+            .then(user => {
+              res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
             })
             .catch(err => {
               console.error(err);
@@ -32,7 +32,6 @@ router.get('/validate', (req, res) => {
             })
         });
     })
-    .then()
     .catch(err => {
       console.error(err);
       res.send(err);
