@@ -21,8 +21,9 @@ class User {
 
   static getUser(id) {
     return new Promise((resolve, reject) => {
-      UserModel.findById(id, (err, user) =>
-        err ? reject(err) : resolve(user));
+      UserModel.findById(id, (err, user) => {
+        err ? reject(err) : resolve(user);
+      });
     });
   }
 
@@ -37,9 +38,11 @@ class User {
   static findByName(name) {
     const regex = new RegExp(name, 'i');
     return new Promise((resolve, reject) => {
-      UserModel.find({name: regex}, 'name email photo', (err, res) =>
-        err ? reject(err) : resolve(res)
-      );
+      UserModel
+        .find({name: regex})
+        .exec((err, res) => {
+          err ? reject(err) : resolve(res);
+        });
     });
   }
 }

@@ -4,8 +4,8 @@ const user = require('../db/user');
 
 /* GET users by name */
 router.get('/find', (req, res) => {
-  user.findByName(req.params.name)
-    .then(users => res.send(JSON.stringify(users)))
+  user.findByName(req.query.name)
+    .then(users => res.send(users))
     .catch(() => res.status(404).send('Not Found'));
 });
 
@@ -19,17 +19,17 @@ router.post('/', (req, res) => {
 /* GET user by ID. */
 router.get('/:id', (req, res) => {
   user.getUser(req.params.id)
-    .then(user => res.send(JSON.stringify(user)))
+    .then(user => res.send(user))
     .catch(() => res.status(404).send('Not Found'));
 });
 
 /* PUT user data. */
-router.put('/:id', (req, res) => {
+router.put('/:token', (req, res) => {
   res.send('respond with a resource');
 });
 
 /* DELETE user data. */
-router.delete('/:id', (req, res) => {
+router.delete('/:token', (req, res) => {
   res.send('respond with a resource');
 });
 
