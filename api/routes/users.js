@@ -14,7 +14,7 @@ router.get('/find', (req, res) => {
 
 /* POST new user. */
 router.post('/', (req, res) => {
-  user.saveUser(req.body.name, req.body.email, req.body.photo || null)
+  user.save(req.body.name, req.body.email, req.body.photo || null)
     .then(() => res.status(201).send('Created'))
     .catch(err => {
       console.error(err);
@@ -24,12 +24,9 @@ router.post('/', (req, res) => {
 
 /* GET user by ID. */
 router.get('/:id', (req, res) => {
-  user.getUser(req.params.id)
-    .then(user => res.send(JSON.stringify(user)))
-    .catch(err => {
-      console.error(err);
-      res.status(404).send('Not Found');
-    });
+  user.get(req.params.id)
+    .then(user => res.send(user))
+    .catch(() => res.status(404).send('Not Found'));
 });
 
 /* PUT user data. */

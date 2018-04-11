@@ -1,36 +1,40 @@
 const SpasiboModel = require('./models/spasibo');
+const user = require('./user');
 
 class Spasibo {
-  static save(from, to, text) {
-    const spasibo = new SpasiboModel({
-      from: from,
-      to: to,
-      text: text
-    });
+  static save(token, to, text) {
+
     return new Promise(((resolve, reject) => {
-      spasibo.save(err => {
-        if (err) {
-          reject(err);
-        }
-        resolve(true);
-      });
+      user.getIdByToken(token)
+        .then(id => {
+          const spasibo = new SpasiboModel({
+            from: id,
+            to: to,
+            text: text
+          });
+          spasibo.save(err => err ? reject(err) : resolve());
+        });
     }));
   }
 
-  static get(id) {
+  static get(token) {
     return new Promise((resolve, reject) => {
-      SpasiboModel
-        .find()
-        .or([{from: id}, {to: id}])
-        .select('to text date')
-        .limit(10)
-        .sort('-date')
-        .then((err, res) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(res);
-        });
+      user.getIdByToken(token)
+        .then(id => {
+          SpasiboModel
+            .find()
+            .or([{to: id}, {from: id}])
+            .populate('from to', null, {token: token})
+            .limit(20)
+            .sort('-date')
+            .select()
+            .exec((err, spasibo) => {
+              err ? reject(err) : resolve(spasibo);
+            });
+        })
+      .catch(err => {
+        reject(err);
+      })
     });
   }
 }

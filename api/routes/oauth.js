@@ -22,14 +22,9 @@ router.get('/validate', (req, res) => {
           res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
         })
         .catch(() => {
-          user.saveUser(name, email, photo)
-            .then(user => {
-              res.redirect('https://spasibo.dergunov.net/oauth/' + user.token);
-            })
-            .catch(err => {
-              console.error(err);
-              res.status(500).send('Internal Server Error');
-            })
+          user.save(name, email, photo)
+            .then(user => res.redirect('https://spasibo.dergunov.net/oauth/' + user.token))
+            .catch(() => res.status(500).send('Internal Server Error'));
         });
     })
     .catch(err => {
