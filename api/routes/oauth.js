@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   res.redirect(oauth.generateAuthUrl());
 });
 
+/* Validate code from OAuth-server */
 router.get('/validate', (req, res) => {
   oauth.getAccessToken(req.query.code)
     .then(tokens => oauth.getName(tokens))
