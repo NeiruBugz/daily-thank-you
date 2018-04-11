@@ -3,7 +3,6 @@ const user = require('./user');
 
 class Spasibo {
   static save(token, to, text) {
-
     return new Promise(((resolve, reject) => {
       user.getIdByToken(token)
         .then(id => {
@@ -17,15 +16,16 @@ class Spasibo {
     }));
   }
 
-  static get(token) {
+  static get(token, skip = 0, limit = 20) {
     return new Promise((resolve, reject) => {
       user.getIdByToken(token)
         .then(id => {
           SpasiboModel
             .find()
             .or([{to: id}, {from: id}])
-            .populate('from to', null, {token: token})
-            .limit(20)
+            .populate('from to', null, {token: {$ne: token}})
+            .skip(parseInt(skip))
+            .limit(parseInt(limit))
             .sort('-date')
             .select()
             .exec((err, spasibo) => {

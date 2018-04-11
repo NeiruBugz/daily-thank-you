@@ -11,7 +11,7 @@ router.post('/:token', (req, res) => {
 
 /* GET spasibo data. */
 router.get('/:token', (req, res) => {
-  spasibo.get(req.params.token)
+  spasibo.get(req.params.token, req.query.skip, req.query.limit)
     .then(spasibo => res.send(spasibo))
     .catch(() => res.status(204).send('No Content'));
 });
