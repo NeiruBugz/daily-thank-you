@@ -50,6 +50,7 @@ class User {
     return new Promise((resolve, reject) => {
       UserModel
         .find({name: regex})
+        .limit(3)
         .exec((err, res) => {
           err ? reject(err) : resolve(res);
         });

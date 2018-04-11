@@ -19,7 +19,7 @@ router.get('/validate', (req, res) => {
       user.getUserByEmail(email)
         .then(user => res.redirect('https://spasibo.dergunov.net/oauth/' + user.token))
         .catch(() => {
-          user.saveUser(name, email, photo)
+          user.save(name, email, photo)
             .then(user => res.redirect('https://spasibo.dergunov.net/oauth/' + user.token))
             .catch(() => res.status(500).send('Internal Server Error'));
         });
