@@ -2,7 +2,7 @@ const UserModel = require('./models/user');
 const crypto = require('crypto');
 
 class User {
-  static saveUser(name, email, photo = null) {
+  static save(name, email, photo = null) {
     const currentDate = (new Date()).valueOf().toString();
     const random = Math.random().toString();
     const token = crypto.createHash('sha1').update(currentDate + random).digest('hex');
@@ -14,12 +14,13 @@ class User {
       token: token
     });
     return new Promise(((resolve, reject) => {
-      user.save((err, res) =>
-        err ? reject(err) : resolve(res));
+      user.save((err, res) => {
+        err ? reject(err) : resolve(res);
+      });
     }));
   }
 
-  static getUser(id) {
+  static get(id) {
     return new Promise((resolve, reject) => {
       UserModel.findById(id, (err, user) => {
         err ? reject(err) : resolve(user);
@@ -29,9 +30,18 @@ class User {
 
   static getUserByEmail(email) {
     return new Promise((resolve, reject) => {
-      UserModel.findOne({email: email}, '_id name email photo token', (err, res) =>
-        err ? reject(err) : resolve(res)
-      );
+      UserModel.findOne({email: email}, '_id name email photo token', (err, res) => {
+        err ? reject(err) : resolve(res);
+      });
+    });
+  }
+
+  static getIdByToken(token) {
+    return new Promise((resolve, reject) => {
+      UserModel
+        .findOne({token: token}, 'id', (err, res) => {
+          err ? reject(err) : resolve(res._id);
+        })
     });
   }
 
