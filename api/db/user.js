@@ -28,6 +28,14 @@ class User {
     });
   }
 
+  static getByToken(token) {
+    return new Promise((resolve, reject) => {
+      UserModel.findOne({token: token}, null, (err, user) => {
+        err ? reject(err) : resolve(user);
+      })
+    });
+  }
+
   static getUserByEmail(email) {
     return new Promise((resolve, reject) => {
       UserModel.findOne({email: email}, '_id name email photo token', (err, res) => {

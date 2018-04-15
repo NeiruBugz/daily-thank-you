@@ -16,6 +16,12 @@ router.get('/find', (req, res) => {
     .catch(() => res.status(404).send('Not Found'));
 });
 
+router.get('/token/:token', (req, res) => {
+  user.getByToken(req.params.token)
+    .then(user => res.send(user))
+    .catch(() => res.status(404).send('Not Found'));
+});
+
 /* GET user by ID. */
 router.get('/:id', (req, res) => {
   user.get(req.params.id)
