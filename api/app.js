@@ -6,15 +6,7 @@ const users = require('./routes/users');
 const spasibo = require('./routes/spasibo');
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
-app.use('/', index);
-app.use('/oauth', oauth);
-app.use('/users', users);
-app.use('/spasibo', spasibo);
-
-// set CORS config and forward to 404 handler
+// set CORS config
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -22,6 +14,14 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use('/', index);
+app.use('/oauth', oauth);
+app.use('/users', users);
+app.use('/spasibo', spasibo);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
