@@ -9,27 +9,38 @@ import {
   UserContent
 } from './styles';
 
-const Store = require('../../containers/Store');
+import {getInfo} from '../../containers/Store'
 
 export default class Profile extends React.Component {
-  getUserData = () => {
-    Store
-      .getInfo()
-      .then(user => {
-        this.setState({user: user});
+  constructor(props) {
+    super(props);
+    this.getUserData();
+  }
+  state = {
+    email: '',
+    name: '',
+    photo: ''
+  }
+  getUserData() {
+    getInfo()
+    .then(res => {
+      this.setState({
+        email: res.data.email,
+        name: res.data.name,
+        photo: res.data.photo
       })
+    })
   }
 
   render() {
-    require('../../containers/Store');
     return (
       <ProfileWrapper>
         <Header/>
         <UserInfo>
-          <UserImage src='' alt='User image'/>
+          <UserImage src={this.state.photo} alt='User image'/>
           <UserContent>
-            <UserName>''</UserName>
-            <UserEmail>''</UserEmail>
+            <UserName>{this.state.name}</UserName>
+            <UserEmail>{this.state.email}</UserEmail>
           </UserContent>
         </UserInfo>
       </ProfileWrapper>
