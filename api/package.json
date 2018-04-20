@@ -1,0 +1,32 @@
+{
+  "name": "daily-thank-you",
+  "version": "0.0.1",
+  "description": "Application for team-building. A mini-chat in which users exchange messages of thanks to each other.",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Dmitry Dergunov",
+      "email": "dmitry@dergunov.net",
+      "url": "https://dergnuov.net/"
+    },
+    {
+      "name": "Nail Badiullin",
+      "email": "badiullin.nail@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NeiruBugz/daily-thank-you"
+  },
+  "private": false,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "~4.15.5",
+    "googleapis": "^28.0.1",
+    "mongoose": "^5.0.12"
+  }
+}
