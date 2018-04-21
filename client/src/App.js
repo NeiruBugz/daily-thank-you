@@ -5,6 +5,7 @@ import Profile from './components/Profile/Profile'
 import ReadThank from './components/ReadThank/ReadThank';
 import SendThank from './components/SendThank/SendThank'
 import Auth from './components/Auth/Auth';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 
 export default class App extends Component {
   render() {
@@ -15,7 +16,8 @@ export default class App extends Component {
           <Route path='/profile' component={Profile}/>
           <Route path='/read' component={ReadThank}/>
           <Route path='/send' component={SendThank}/>
-          <Route path='/oauth/:token'component={Auth}/>
+          <Route path='/oauth/:token' component={Auth}/>
+          <Route path='/privacy-policy' component={PrivacyPolicy}/>
         </div>
       </Router>
     );

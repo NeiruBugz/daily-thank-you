@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const apiUrl = 'https://spasibo-spasibo.7e14.starter-us-west-2.openshiftapps.com';
+export const apiUrl = 'http://spasibo.dergunov.net:3000';
 
 const getToken = () =>
   localStorage.getItem('token');
