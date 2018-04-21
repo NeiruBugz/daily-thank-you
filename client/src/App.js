@@ -13,7 +13,7 @@ export default class App extends Component {
         <div>
           <Route path='/' exact component={Login}/>
           <Route path='/profile' component={Profile}/>
-          <Route path='/readthank' component={ReadThank}/>
+          <Route path='/read' component={ReadThank}/>
           <Route path='/send' component={SendThank}/>
           <Route path='/oauth/:token'component={Auth}/>
         </div>
