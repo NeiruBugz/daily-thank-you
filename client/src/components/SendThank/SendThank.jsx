@@ -17,25 +17,26 @@ export default class SendThank extends React.Component {
     this.state = {
       person: '',
       content: ''
-    }
+    };
 
     this.handleSubmit = this
       .handleSubmit
       .bind(this);
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
     sendThank(this.state.person, this.state.content, getToken());
-  }
+  };
 
   handleNameChange = (e) => {
     this.setState({person: e.target.value});
-  }
+  };
 
   handleTextChange = (e) => {
     this.setState({content: e.target.value});
-  }
+  };
+
   render() {
     return (
       <div>

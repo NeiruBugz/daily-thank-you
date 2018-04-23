@@ -19,8 +19,8 @@ export default class Profile extends React.Component {
   state = {
     email: '',
     name: '',
-    photo: ''
-  }
+    photo: 'https://www.w3schools.com/howto/img_avatar.png'
+  };
   getUserData() {
     getInfo()
     .then(res => {
