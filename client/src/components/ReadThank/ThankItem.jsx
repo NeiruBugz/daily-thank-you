@@ -7,7 +7,7 @@ export class ThankItem extends React.Component {
     return (
       <Thank read={this.props.read}>
         <ThankHeader>
-          <AuthorImage src={this.props.src}/>
+          <AuthorImage src={this.props.photo}/>
           <AuthorName>{this.props.name}</AuthorName>
         </ThankHeader>
         <ThankContent>

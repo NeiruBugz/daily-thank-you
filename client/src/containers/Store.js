@@ -18,4 +18,8 @@ export function getThank(token, from = 0, limit = 0) {
   return axios.get(apiUrl + '/spasibo/' + token, {params: {from: from, limit: limit}});
 }
 
+export function findUser(name) {
+  return axios.get(apiUrl + '/users/find', {params: {name: name}});
+}
+
 

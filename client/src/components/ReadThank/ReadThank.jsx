@@ -8,7 +8,7 @@ export default class ReadThank extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      spasibo: []
+      thanks: []
     };
     this.getThankList();
   }
@@ -17,17 +17,17 @@ export default class ReadThank extends React.Component {
     getThank(getToken(), 0, 10)
       .then(res => {
         this.setState({
-          spasibo: res.data
+          thanks: res.data
         });
       })
   }
 
   thanksRender = () =>
-    this.state.spasibo.map((item, index) =>
+    this.state.thanks.map((item, index) =>
       item.from ?
-        <ThankItem key={index} read src={item.from.photo} name={item.from.name} text={item.text}/>
+        <ThankItem key={index} read photo={item.from.photo} name={item.from.name} text={item.text}/>
         :
-        <ThankItem key={index} src={item.to.photo} name={item.to.name} text={item.text}/>
+        <ThankItem key={index} photo={item.to.photo} name={item.to.name} text={item.text}/>
     );
 
   render() {
