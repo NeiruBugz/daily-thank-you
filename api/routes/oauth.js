@@ -2,10 +2,17 @@ const express = require('express');
 const router = express.Router();
 const oauth = require('../oauth/index');
 const user = require('../db/user');
+const token = require('../db/token');
 
 /* GET auth URL. */
 router.get('/', (req, res) => {
-  res.redirect(oauth.generateAuthUrl());
+  token.ifExist(req.query.token).then(result => {
+    if (result) {
+      res.redirect(oauth.generateAuthUrl());
+    } else {
+      res.sendStatus(401);
+    }
+  });
 });
 
 /* Validate code from OAuth-server */
