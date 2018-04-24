@@ -4,7 +4,7 @@ const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
   '189576862785-p83qioo93omueb6788uhm27dtfbbugvm.apps.googleusercontent.com',
   'Y7bz9Rx7fp0ojl5l2avXIqpb',
-  'https://spasibo.dergunov.net'
+  'https://spasibo.dergunov.net:3000/oauth/validate'
 );
 
 function generateAuthUrl() {
