@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarn
+  /usr/bin/node /usr/local/bin/yarn add forever
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
@@ -726,4 +726,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/dergunov/projects/daily-thank-you/api/node_modules/async/package.json'
+  Error: EACCES: permission denied, mkdir '/home/dergunov/projects/daily-thank-you/api/node_modules/mongoose/node_modules'
