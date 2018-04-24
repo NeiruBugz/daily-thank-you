@@ -26,15 +26,15 @@ class Spasibo {
             .populate('from to', null, {token: {$ne: token}})
             .skip(parseInt(skip))
             .limit(parseInt(limit))
-            .sort('-date')
+            .sort('date')
             .select()
             .exec((err, spasibo) => {
               err ? reject(err) : resolve(spasibo);
             });
         })
-      .catch(err => {
-        reject(err);
-      })
+        .catch(err => {
+          reject(err);
+        });
     });
   }
 }

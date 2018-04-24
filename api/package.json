@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Application for team-building. A mini-chat in which users exchange messages of thanks to each other.",
   "license": "MIT",
+  "main": "app.js",
   "contributors": [
     {
       "name": "Dmitry Dergunov",
@@ -20,12 +21,15 @@
   },
   "private": false,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "forever start --minUptime 1000 --spinSleepTime 1000 -l api.log -a ./bin/www",
+    "stop": "forever stop ./bin/www",
+    "logs": "cat ~/.forever/api.log",
     "dev": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "~4.15.5",
+    "forever": "^0.15.3",
     "googleapis": "^28.0.1",
     "mongoose": "^5.0.12"
   }

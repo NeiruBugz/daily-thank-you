@@ -17,4 +17,5 @@ export const MenuItem = styled.a `
   color: #fdfdfd;
   padding: 2rem;
   cursor: pointer;
+  text-decoration: none;
 `

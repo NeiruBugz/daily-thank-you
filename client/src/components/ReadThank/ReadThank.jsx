@@ -1,31 +1,40 @@
 import React from 'react'
-import { ReadWrapper, Thank, ThankHeader, ThankContent, AuthorImage, AuthorName } from './styles';
+import {ReadWrapper} from './styles';
 import Header from '../Header/Header';
-
+import {getThank, getToken} from '../../containers/Store';
+import {ThankItem} from "./ThankItem";
 
 export default class ReadThank extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      thanks: []
+    };
+    this.getThankList();
+  }
+
+  getThankList() {
+    getThank(getToken(), 0, 10)
+      .then(res => {
+        this.setState({
+          thanks: res.data
+        });
+      })
+  }
+
+  thanksRender = () =>
+    this.state.thanks.map((item, index) =>
+      item.from ?
+        <ThankItem key={index} read photo={item.from.photo} name={item.from.name} text={item.text}/>
+        :
+        <ThankItem key={index} photo={item.to.photo} name={item.to.name} text={item.text}/>
+    );
+
   render() {
     return (
       <ReadWrapper>
         <Header/>
-        <Thank read>
-          <ThankHeader>
-            <AuthorImage src='https://www.w3schools.com/howto/img_avatar.png'/>
-            <AuthorName>Author Name</AuthorName>
-          </ThankHeader>
-          <ThankContent>
-            Спасибо за носки :)
-          </ThankContent>
-        </Thank>
-        <Thank>
-          <ThankHeader>
-            <AuthorImage src='https://www.w3schools.com/howto/img_avatar.png'/>
-            <AuthorName>Author Name</AuthorName>
-          </ThankHeader>
-          <ThankContent>
-            Спасибо за чай &lt;3
-          </ThankContent>
-        </Thank>
+        {this.thanksRender()}
       </ReadWrapper>
     );
   }

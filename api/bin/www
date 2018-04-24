@@ -7,6 +7,9 @@
 const app = require('../app');
 const debug = require('debug')('daily-thank-you:server');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
 
 /**
  * Get port from environment and store in Express.
@@ -16,10 +19,19 @@ const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
+ * Set SSL certificate.
+ */
+
+const options = {
+  key: fs.readFileSync(process.env.SSL_KEY).toString(),
+  cert:  fs.readFileSync(process.env.SSL_CERT).toString(),
+};
+
+/**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.

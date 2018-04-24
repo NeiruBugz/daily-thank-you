@@ -8,7 +8,7 @@ export default class Header extends React.Component {
     return (
       <HeaderWrapper>
         <BMenu/>
-        <HeaderTitle>Daily Спасибо</HeaderTitle>
+        <HeaderTitle href='/profile'>Daily Спасибо</HeaderTitle>
       </HeaderWrapper>
     );
   }
