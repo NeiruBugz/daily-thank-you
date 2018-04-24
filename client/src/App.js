@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile'
 import ReadThank from './components/ReadThank/ReadThank';
@@ -14,7 +14,7 @@ export default class App extends Component {
         <div>
           <Route path='/' exact component={Login}/>
           <Route path='/profile' component={Profile}/>
-          <Route path='/readthank' component={ReadThank}/>
+          <Route path='/read' component={ReadThank}/>
           <Route path='/send' component={SendThank}/>
           <Route path='/oauth/:token' component={Auth}/>
           <Route path='/privacy-policy' component={PrivacyPolicy}/>

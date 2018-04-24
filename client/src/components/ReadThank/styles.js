@@ -10,8 +10,12 @@ export const Thank = styled.div `
   padding: 1rem;
   height: 8rem;
   border-radius: 10px;
-  align-self: ${props => props.read ? 'flex-start' : 'flex-end'};
-  background: ${props => props.read ? '#64e' : '#8262FF'}
+  align-self: ${props => props.read
+  ? 'flex-start'
+  : 'flex-end'};
+  background: ${props => props.read
+    ? '#64e'
+    : '#8262FF'} 
 `
 
 export const ThankHeader = styled.div `

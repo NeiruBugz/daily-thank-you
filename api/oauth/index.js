@@ -4,14 +4,13 @@ const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
   '189576862785-p83qioo93omueb6788uhm27dtfbbugvm.apps.googleusercontent.com',
   'Y7bz9Rx7fp0ojl5l2avXIqpb',
-  'https://spasibo-spasibo.7e14.starter-us-west-2.openshiftapps.com/oauth/validate'
+  'https://spasibo.dergunov.net'
 );
 
 function generateAuthUrl() {
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    scope: 'https://www.googleapis.com/auth/userinfo.email'//,
-    // prompt: 'consent'
+    scope: 'https://www.googleapis.com/auth/userinfo.email'
   });
 }
 
