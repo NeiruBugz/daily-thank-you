@@ -25,7 +25,6 @@ export const SendName = styled.div `
   align-items: center;
   font-size: ${props => props.active ? '1.4rem' : '1rem'};
   height: ${props => props.active ? '2.2rem' : '8rem'};
-  
 `;
 
 
@@ -40,15 +39,16 @@ export const SendInput = styled.input`
 
 export const SendHints = styled.div `
   position: absolute;
+  width: calc(80% + 4rem);
+  background: #fff;
   top: 100%;
   left: 0;
-  right: 0;
+  box-shadow: -1px 15px 96px -13px rgba(112,112,112,1);
 `;
 
 export const SendHint = styled.div `
   z-index: 50;
   width: 86%;
-  box-shadow: -1px 15px 96px -13px rgba(112,112,112,1);
   cursor: pointer;
   padding-left: 2rem;
   display: flex;
@@ -60,20 +60,22 @@ export const SendHintImage = styled.img `
   border-radius: 50%;
   height: ${props => props.active ? '2rem' : '1.6rem'};
   width: ${props => props.active ? '2rem' : '1.6rem'};
+  margin-right: 1rem;
 `;
 
-export const SendLabel = styled.label`
+export const SendLabel = styled.label `
   font-weight: 700;
+  display: block;
   margin-top: ${props => props.text ? '4rem' : '1rem'};
 `;
 
 export const SendButton = styled.button `
-  width: 94%;
+  width: calc(80% + 4rem);
   margin-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .7rem;
+  padding: .7rem 2rem;
   font-size: 1rem;
   border: 2px solid #1d1d1d;
   border-radius: 10px;

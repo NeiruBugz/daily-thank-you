@@ -25,15 +25,12 @@ export default class SendThank extends React.Component {
       content: '',
       hints: [],
     };
-
-    this.handleSubmit = this
-      .handleSubmit
-      .bind(this);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     sendThank(this.state.id, this.state.content, getToken());
+    window.location.pathname = '/read';
   };
 
   handleNameChange = (e) => {
@@ -45,6 +42,10 @@ export default class SendThank extends React.Component {
           this.setState({hints: res.data});
         });
     }
+  };
+
+  handleNameBlur = () => {
+    this.setState({hints: []});
   };
 
   handleTextChange = (e) => {
@@ -77,8 +78,8 @@ export default class SendThank extends React.Component {
       </SendName>
       :
       <SendName>
-        <SendLabel>Кому</SendLabel>
-        <SendInput onChange={this.handleNameChange}></SendInput>
+        <SendLabel>Кому:</SendLabel>
+        <SendInput onBlur={this.handleNameBlur} onChange={this.handleNameChange} placeholder='Начните вводить имя'></SendInput>
         <SendHints>{this.renderHints()}</SendHints>
       </SendName>;
 
@@ -91,9 +92,8 @@ export default class SendThank extends React.Component {
           <SendTitle>Отправить</SendTitle>
           <SendForm onSubmit={this.handleSubmit}>
             {this.renderName()}
-            <SendLabel text>За что:
-            </SendLabel>
-            <SendInput text onChange={this.handleTextChange}></SendInput>
+            <SendLabel text>За что:</SendLabel>
+            <SendInput text onChange={this.handleTextChange} placeholder='За что хотите поблагодарить?'></SendInput>
             <SendButton>Отправить</SendButton>
           </SendForm>
 
