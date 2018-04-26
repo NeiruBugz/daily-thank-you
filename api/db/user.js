@@ -32,7 +32,7 @@ class User {
     return new Promise((resolve, reject) => {
       UserModel.findOne({token: token}, null, (err, user) => {
         err ? reject(err) : resolve(user);
-      })
+      });
     });
   }
 
@@ -49,7 +49,7 @@ class User {
       UserModel
         .findOne({token: token}, 'id', (err, res) => {
           err ? reject(err) : resolve(res._id);
-        })
+        });
     });
   }
 

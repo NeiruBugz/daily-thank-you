@@ -23,13 +23,13 @@ class Spasibo {
           SpasiboModel
             .find()
             .or([{to: id}, {from: id}])
-            .populate('from to', null, {token: {$ne: token}})
+            .populate('from to')
             .skip(parseInt(skip))
             .limit(parseInt(limit))
             .sort('date')
             .select()
             .exec((err, spasibo) => {
-              err ? reject(err) : resolve(spasibo);
+              err ? reject(err) : resolve({spasibo: spasibo, id: id});
             });
         })
         .catch(err => {
