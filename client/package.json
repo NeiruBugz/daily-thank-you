@@ -1,19 +1,24 @@
 {
-  "name": "daily-thanks",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "material-ui": "^0.20.0",
-    "normalize.css": "^8.0.0",
-    "react": "^16.2.0",
-    "react-burger-menu": "^2.3.0",
-    "react-dom": "^16.2.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "reactjs-popup": "^1.0.5",
-    "styled-components": "^3.2.3"
+  "name": "daily-thank-you",
+  "version": "0.0.1",
+  "description": "Application for team-building. A mini-chat in which users exchange messages of thanks to each other.",
+  "license": "MIT",
+  "private": false,
+  "main": "index.js",
+  "contributors": [{
+      "name": "Nail Badiullin",
+      "email": "badiullin.nail@gmail.com",
+      "url": "https://github.com/NeiruBugz"
+    },
+    {
+      "name": "Dmitry Dergunov",
+      "email": "dmitry@dergunov.net",
+      "url": "https://dergnuov.net/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NeiruBugz/daily-thank-you"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,6 +27,17 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "normalize.css": "^8.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "reactjs-popup": "^1.0.5",
+    "styled-components": "^3.2.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -32,10 +48,6 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "@storybook/react": "^3.4.1",
-    "@storybook/addon-actions": "^3.4.1",
-    "@storybook/addon-links": "^3.4.1",
-    "@storybook/addons": "^3.4.1",
     "babel-core": "^6.26.0",
     "babel-runtime": "^6.26.0"
   }
