@@ -29,8 +29,9 @@ export default class SendThank extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    sendThank(this.state.id, this.state.content, getToken());
-    window.location.pathname = '/read';
+    sendThank(this.state.id, this.state.content, getToken()).then(() => {
+      window.location.pathname = '/read';
+    });
   };
 
   handleNameChange = (e) => {
@@ -67,7 +68,8 @@ export default class SendThank extends React.Component {
   renderHints = () =>
     this.state.hints.map((item, index) => <SendHint key={index}
                                                     data-id={item._id} data-name={item.name} data-photo={item.photo}
-                                                    onClick={this.setUser}><SendHintImage src={item.photo}/>{item.name}</SendHint>);
+                                                    onClick={this.setUser}><SendHintImage src={item.photo}/>{item.name}
+    </SendHint>);
 
   renderName = () =>
     //проверка на айдишник (задан/незадан)
@@ -93,7 +95,8 @@ export default class SendThank extends React.Component {
           <SendForm onSubmit={this.handleSubmit}>
             {this.renderName()}
             <SendLabel text>За что:</SendLabel>
-            <SendInput text onFocus={this.handleFocus} onChange={this.handleTextChange} placeholder='За что хотите поблагодарить?'></SendInput>
+            <SendInput text onFocus={this.handleFocus} onChange={this.handleTextChange}
+                       placeholder='За что хотите поблагодарить?'></SendInput>
             <SendButton>Отправить</SendButton>
           </SendForm>
 
