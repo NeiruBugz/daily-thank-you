@@ -1,6 +1,10 @@
 {
-  "short_name": "Daily Спасибо",
+  "short_name": "dthankyou",
   "name": "Daily Спасибо",
+  "description": "Простой способ сказать спасибо",
+  "dir": "ltr",
+  "lang": "ru-RU",
+  "orientation": "portrait-primary",
   "icons": [{
       "src": "fav_144.png",
       "sizes": "144x144",
