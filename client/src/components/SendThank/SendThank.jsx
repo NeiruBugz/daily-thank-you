@@ -44,7 +44,7 @@ export default class SendThank extends React.Component {
     }
   };
 
-  handleNameBlur = () => {
+  handleFocus = () => {
     this.setState({hints: []});
   };
 
@@ -79,7 +79,7 @@ export default class SendThank extends React.Component {
       :
       <SendName>
         <SendLabel>Кому:</SendLabel>
-        <SendInput onBlur={this.handleNameBlur} onChange={this.handleNameChange} placeholder='Начните вводить имя'></SendInput>
+        <SendInput onChange={this.handleNameChange} placeholder='Начните вводить имя'></SendInput>
         <SendHints>{this.renderHints()}</SendHints>
       </SendName>;
 
@@ -93,7 +93,7 @@ export default class SendThank extends React.Component {
           <SendForm onSubmit={this.handleSubmit}>
             {this.renderName()}
             <SendLabel text>За что:</SendLabel>
-            <SendInput text onChange={this.handleTextChange} placeholder='За что хотите поблагодарить?'></SendInput>
+            <SendInput text onFocus={this.handleFocus} onChange={this.handleTextChange} placeholder='За что хотите поблагодарить?'></SendInput>
             <SendButton>Отправить</SendButton>
           </SendForm>
 
