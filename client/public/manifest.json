@@ -1,8 +1,7 @@
 {
   "short_name": "Daily Спасибо",
   "name": "Daily Спасибо",
-  "icons": [
-    {
+  "icons": [{
       "src": "fav_144.png",
       "sizes": "144x144",
       "type": "image/png"
@@ -14,11 +13,11 @@
     },
     {
       "src": "fav_512.png",
-      "sizes":"512x512",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/?utm_source=homescreen",
   "display": "standalone",
   "theme_color": "#1d1d1d",
   "background_color": "#1d1d1d"
