@@ -26,7 +26,7 @@ class Spasibo {
             .populate('from to')
             .skip(parseInt(skip))
             .limit(parseInt(limit))
-            .sort('date')
+            .sort('-date')
             .select()
             .exec((err, spasibo) => {
               err ? reject(err) : resolve({spasibo: spasibo, id: id});
