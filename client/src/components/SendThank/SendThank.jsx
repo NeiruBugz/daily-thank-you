@@ -9,6 +9,7 @@ import {
   SendInput,
   SendLabel,
   SendName,
+  SendNameChange,
   SendTitle
 } from './styles';
 import { findUser, getToken, sendThank } from '../../containers/Store';
@@ -64,6 +65,15 @@ export default class SendThank extends React.Component {
     });
   };
 
+  removeUser = () => {
+    this.setState({
+      id: null,
+      hints: [],
+      photo: null,
+      name: ''
+    });
+  };
+
   // генерим всплывающие подсказки (имена)
   renderHints = () =>
     this.state.hints.map((item, index) => <SendHint key={index}
@@ -77,11 +87,12 @@ export default class SendThank extends React.Component {
       <SendName active>
         <SendHintImage active src={this.state.photo}/>
         <span>{this.state.name}</span>
+        <SendNameChange onClick={this.removeUser}>Сменить</SendNameChange>
       </SendName>
       :
       <SendName>
         <SendLabel>Кому:</SendLabel>
-        <SendInput onChange={this.handleNameChange} placeholder='Начните вводить имя'></SendInput>
+        <SendInput onChange={this.handleNameChange} placeholder='Начните вводить имя'/>
         <SendHints>{this.renderHints()}</SendHints>
       </SendName>;
 
@@ -96,10 +107,9 @@ export default class SendThank extends React.Component {
             {this.renderName()}
             <SendLabel text>За что:</SendLabel>
             <SendInput text onFocus={this.handleFocus} onChange={this.handleTextChange}
-                       placeholder='За что хотите поблагодарить?'></SendInput>
+                       placeholder='За что хотите поблагодарить?'/>
             <SendButton>Отправить</SendButton>
           </SendForm>
-
         </Send>
       </div>
     );

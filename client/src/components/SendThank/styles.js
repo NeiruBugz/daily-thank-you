@@ -27,6 +27,11 @@ export const SendName = styled.div `
   height: ${props => props.active ? '2.2rem' : '8rem'};
 `;
 
+export const SendNameChange = styled.a `
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 1.5rem;
+`;
 
 export const SendInput = styled.input`
   border: 2px solid #1d1d1d;
