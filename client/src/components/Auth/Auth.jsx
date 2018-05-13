@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class Auth extends React.Component {
-  state = {}
 
   constructor(props) {
     super(props);
